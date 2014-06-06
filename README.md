@@ -1,0 +1,4 @@
+rarity
+======
+
+Control function arity
