@@ -3,7 +3,7 @@
 var should = require('should');
 var rarity = require('../');
 
-describe('Argument slicer', function() {
+describe('rarity()', function() {
   var EXPECTED_RESULT = "expectedResult";
 
   var shittyFunction = function(cb) {
@@ -13,7 +13,6 @@ describe('Argument slicer', function() {
   };
 
   var noop = function() {};
-
 
   it("should reduce argument number", function(done) {
     shittyFunction(rarity(2, function(err, result) {
@@ -47,7 +46,7 @@ describe('Argument slicer', function() {
       shittyFunction(rarity(4.023, noop));
     }
     catch(e) {
-      e.toString().should.containDeep('must be an array or a positive integer');
+      e.toString().should.containDeep('must be a positive integer');
       return done();
     }
 
@@ -59,7 +58,19 @@ describe('Argument slicer', function() {
       shittyFunction(rarity(-4, noop));
     }
     catch(e) {
-      e.toString().should.containDeep('must be an array or a positive integer');
+      e.toString().should.containDeep('must be a positive integer');
+      return done();
+    }
+
+    done(new Error("Should not be working"));
+  });
+
+  it("should fail without function as second argument", function(done) {
+    try {
+      rarity(4, 4);
+    }
+    catch(e) {
+      e.toString().should.containDeep('must be a function');
       return done();
     }
 

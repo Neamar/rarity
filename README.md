@@ -1,5 +1,9 @@
 rarity
 ======
+[![Build Status](https://travis-ci.org/Neamar/rarity.png?branch=master)](https://travis-ci.org/Neamar/rarity)
+[![Dependency Status](https://gemnasium.com/Neamar/rarity.png)](https://gemnasium.com/Neamar/rarity)
+[![Coverage Status](https://coveralls.io/repos/Neamar/rarity/badge.png?branch=master)](https://coveralls.io/r/Neamar/rarity?branch=master)
+[![NPM version](https://badge.fury.io/js/rarity.png)](http://badge.fury.io/js/rarity)
 
 Sometime, you need to control the arity of your callbacks.
 
@@ -71,11 +75,37 @@ someShittyFunction(function(result) {
 Now becomes:
 ```js
 // Wraps cb with a new function, sending null as the first argument.
-someShittyFunction(rarity([null], cb));
+someShittyFunction(rarity.pad([null], cb));
 ```
 
 ### Documentation
-`rarity(arrayOfArgumentsToPad, cb)`
+`rarity.pad(arrayOfArgumentsToPad, cb)`
+
+## 3 - Carry arguments
+Here is some cumbersome code:
+
+```js
+function(cb) {
+    var aVar = 1;
+    someFunction(function(err, result) {
+        cb(err, aVar, result);
+    })
+}
+```
+
+This is shitty to write. Here is some improved version:
+
+```js
+function(cb) {
+    var aVar = 1;
+    someFunction(rarity.carry([aVar], cb));
+}
+```
+
+Arguments passed in the array will be carried between the first argument of the original callback (the error) and all the others.
+
+### Documentation
+`rarity.carry(arrayOfArgumentsToAddBetweenErrorAndOriginal, cb)`
 
 ## Installation
 ```sh
