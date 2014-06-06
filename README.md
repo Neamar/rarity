@@ -4,7 +4,7 @@ rarity
 Sometime, you need to control the arity of your callbacks.
 
 ## 1 - Slice arguments
-Did you ever find yourself writing code such as this one:
+Did you ever find yourself writing shitty code such as this one:
 
 ```js
 someShittyFunction(function(err, uselessArgument, anotherUselessArgument) {
@@ -12,14 +12,13 @@ someShittyFunction(function(err, uselessArgument, anotherUselessArgument) {
 });
 ```
 
-To minimize the quantity of arguments sent to your next function?
+To minimize the quantity of arguments sent over to your next function?
 
 `rarity` allow you to easily control this behavior:
 
 ```js
 // Generate a wrapper function around cb, only forwarding the first parameter.
 someShittyFunction(rarity(1, cb));
-});
 ```
 
 ### Documentation
