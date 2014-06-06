@@ -1,0 +1,32 @@
+{
+  "name": "rarity",
+  "description": "Control function arity.",
+  "version": "1.0.0",
+  "author": "Matthieu Bacconnier <matthieu@anyfetch.com>",
+  "scripts": {
+    "test": "NODE_ENV=test mocha -R spec test/",
+  },
+  "main": "./index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AnyFetch/rarity"
+  },
+  "keywords": [
+    "rarity",
+    "arity"
+    "waterfall"
+    "arguments"
+    "parameters"
+  ],
+  "dependencies": {
+  },
+  "devDependencies": {
+    "async": "0.9.x",
+    "mocha": "1.x.x",
+    "should": "3.3.x"
+  },
+  "licence": "MIT",
+  "engines": {
+    "node": ">=0.10"
+  }
+}
