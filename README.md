@@ -1,9 +1,9 @@
 rarity
 ======
 
-Sometime, you need to control the arity of your callbacks to avoid sending more parameters than you strictly need.
+Sometime, you need to control the arity of your callbacks.
 
-## Slice arguments
+## 1 - Slice arguments
 Did you ever find yourself writing code such as this one:
 
 ```js
@@ -21,6 +21,9 @@ To minimize the quantity of arguments sent to your next function?
 someShittyFunction(rarity(1, cb));
 });
 ```
+
+### Documentation
+`rarity(maxNumberOfArgumentsToForward, cb)`
 
 #### Without rarity
 ```js
@@ -55,3 +58,23 @@ async.waterfall([
     }
 ], process.exit);
 ```
+
+## 2 - Pad arguments
+When using some shitty-backported lib, for instance `factory-lady`, you'll need to pad your queries with a first additional argument representing a fake error, making it compatible with all the node ecosystem.
+
+The following code:
+```js
+someShittyFunction(function(result) {
+    cb(null, result);
+});
+```
+
+Now becomes:
+```js
+// Wraps cb with a new function, sending null as the first argument.
+someShittyFunction(rarity([null], cb));
+```
+
+### Documentation
+`rarity(arrayOfArgumentsToPad, cb)`
+
