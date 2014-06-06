@@ -98,6 +98,8 @@ function(cb) {
 }
 ```
 
+Arguments passed in the array will be carried between the first argument of the original callback (the error) and all the others.
+
 ### Documentation
 `rarity.carry(arrayOfArgumentsToAddBetweenErrorAndOriginal, cb)`
 
