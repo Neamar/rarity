@@ -20,7 +20,7 @@ describe('rarity.carry()', function() {
     done(new Error("Should not be working"));
   });
 
-  it.only("should fail without function as second argument", function(done) {
+  it("should fail without function as second argument", function(done) {
     try {
       rarity.carry([], 4);
     }
@@ -46,7 +46,7 @@ describe('rarity.carry()', function() {
     }));
   });
 
-  it("should carry arguments when cb only launch err", function(done) {
+  it("should carry arguments when cb only send err", function(done) {
     var original = function(cb) {
       cb('error');
     };
@@ -60,13 +60,13 @@ describe('rarity.carry()', function() {
     }));
   });
 
-  it("should carry arguments when cb don't render anything", function(done) {
+  it("should carry arguments when cb don't send anything", function(done) {
     var original = function(cb) {
       cb();
     };
 
     original(rarity.carry(['carry'], function(c1, c2) {
-      c1.should.eql(null);
+      should(c1).eql(null);
       c2.should.eql('carry');
       arguments.should.have.lengthOf(2);
 
