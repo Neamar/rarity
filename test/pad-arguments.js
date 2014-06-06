@@ -3,7 +3,7 @@
 var should = require('should');
 var rarity = require('../');
 
-describe('Argument padder', function() {
+describe('rarity.pad()', function() {
   var EXPECTED_RESULT = "expectedResult";
 
   var noop = function() {};
@@ -19,6 +19,18 @@ describe('Argument padder', function() {
     }
     catch(e) {
       e.toString().should.containDeep('must be an array');
+      return done();
+    }
+
+    done(new Error("Should not be working"));
+  });
+
+  it("should fail without function as second argument", function(done) {
+    try {
+      rarity.pad([], 4);
+    }
+    catch(e) {
+      e.toString().should.containDeep('must be a function');
       return done();
     }
 
