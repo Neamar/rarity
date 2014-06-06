@@ -83,3 +83,7 @@ npm install rarity
 ```
 
 You're done. Now go write some shitty code.
+
+## Why the shitty name?
+`rarity` is short for `reduce arity`.
+Also, arity was already created on npm.
