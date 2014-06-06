@@ -29,6 +29,6 @@ module.exports = function rarity(arg, cb) {
   else {
     // yay, yay, throwing is evil.
     // But this can only happen with invalid coding, not at runtime call.
-    throw new Error("Invalid rarity call (first parameter must be an array or an integer)");
+    throw new Error("Invalid rarity call (first parameter must be an array or a positive integer)");
   }
 };
