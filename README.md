@@ -12,7 +12,7 @@ someShittyFunction(function(err, uselessArgument, anotherUselessArgument) {
 });
 ```
 
-To minimize the quantity of arguments sent over to your next function?
+To minimize the quantity of arguments sent over to your next function (`async.waterfall` anyone?)
 
 `rarity` allow you to easily control this behavior:
 
