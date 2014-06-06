@@ -12,6 +12,9 @@ describe('Argument slicer', function() {
     });
   };
 
+  var noop = function() {};
+
+
   it("should reduce argument number", function(done) {
     shittyFunction(rarity(2, function(err, result) {
       should(err).eql(null);
@@ -39,4 +42,25 @@ describe('Argument slicer', function() {
     }));
   });
 
+  it("should fail with non-integer value", function(done) {
+    try {
+      shittyFunction(rarity(4.023, noop));
+    }
+    catch(e) {
+      return done();
+    }
+
+    done(new Error("Should not be working"));
+  });
+
+  it("should fail with negative value", function(done) {
+    try {
+      shittyFunction(rarity(-4, noop));
+    }
+    catch(e) {
+      return done();
+    }
+
+    done(new Error("Should not be working"));
+  });
 });

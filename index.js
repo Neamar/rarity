@@ -18,11 +18,11 @@ module.exports = function rarity(arg, cb) {
       cb.apply(this, defaultArgs.concat(args));
     };
   }
-  else if(!isNaN(arg)) {
+  else if(!isNaN(arg) && arg > 0 && Math.round(arg) === arg) {
     // rarity(1, cb);
     // => cb(arguments[0])
     return function() {
-      var args = Array.prototype.slice.call(arguments, 0, arg);
+      var args = Array.prototype.slice.call(arguments, 0, Math.round(arg));
       cb.apply(this, args);
     };
   }
