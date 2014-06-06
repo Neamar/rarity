@@ -18,12 +18,12 @@ describe('rarity()', function() {
     done(new Error("Should not be working"));
   });
 
-  it("should fail on non integer / non array for first argument", function(done) {
+  it("should fail on non integer for first argument", function(done) {
     try {
       rarity("nope", noop);
     }
     catch(e) {
-      e.toString().should.containDeep('must be an array or a positive integer');
+      e.toString().should.containDeep('must be a positive integer');
       return done();
     }
 

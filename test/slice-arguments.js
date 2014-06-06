@@ -47,7 +47,7 @@ describe('Argument slicer', function() {
       shittyFunction(rarity(4.023, noop));
     }
     catch(e) {
-      e.toString().should.containDeep('must be an array or a positive integer');
+      e.toString().should.containDeep('must be a positive integer');
       return done();
     }
 
@@ -59,7 +59,7 @@ describe('Argument slicer', function() {
       shittyFunction(rarity(-4, noop));
     }
     catch(e) {
-      e.toString().should.containDeep('must be an array or a positive integer');
+      e.toString().should.containDeep('must be a positive integer');
       return done();
     }
 
