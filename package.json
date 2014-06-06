@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "author": "Matthieu Bacconnier <matthieu@anyfetch.com>",
   "scripts": {
-    "test": "NODE_ENV=test mocha -R spec test/",
+    "test": "NODE_ENV=test mocha -R spec"
   },
   "main": "./index.js",
   "repository": {
@@ -13,15 +13,14 @@
   },
   "keywords": [
     "rarity",
-    "arity"
-    "waterfall"
-    "arguments"
+    "arity",
+    "waterfall",
+    "arguments",
     "parameters"
   ],
   "dependencies": {
   },
   "devDependencies": {
-    "async": "0.9.x",
     "mocha": "1.x.x",
     "should": "3.3.x"
   },
