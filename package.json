@@ -21,7 +21,6 @@
   "dependencies": {
   },
   "devDependencies": {
-    "async": "0.9.x",
     "mocha": "1.x.x",
     "should": "3.3.x"
   },
