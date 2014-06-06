@@ -77,3 +77,9 @@ someShittyFunction(rarity([null], cb));
 ### Documentation
 `rarity(arrayOfArgumentsToPad, cb)`
 
+## Installation
+```sh
+npm install rarity
+```
+
+You're done. Now go write some shitty code.
