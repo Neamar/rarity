@@ -33,7 +33,7 @@ Arguments passed in the array will be carried between the first argument of the 
 ### Documentation
 `rarity.carry(arrayOfArgumentsToAddBetweenErrorAndOriginal, cb)`
 
-> If you pass something else than an array, it will be automatically wrapped in an array: `rarity.carry(value, cb)` => `rarity.caryr([value], cb)` => `cb(err, value, ...arguments)`
+> If you pass something else than an array, it will be automatically wrapped in an array: `rarity.carry(value, cb)` => `rarity.carry([value], cb)` => `cb(err, value, ...arguments)`
 
 ## 2 - Slice arguments
 Did you ever find yourself writing shitty code such as this one:
