@@ -7,7 +7,35 @@ rarity
 
 Sometime, you need to control the arity of your callbacks.
 
-## 1 - Slice arguments
+## 1 - Carry arguments
+Here is some cumbersome code:
+
+```js
+function(cb) {
+    var aVar = 1;
+    someFunction(function(err, result) {
+        cb(err, aVar, result);
+    })
+}
+```
+
+This is shitty to write. Here is some improved version, using rarity:
+
+```js
+function(cb) {
+    var aVar = 1;
+    someFunction(rarity.carry([aVar], cb));
+}
+```
+
+Arguments passed in the array will be carried between the first argument of the original callback (the error, in node convention) and all the others.
+
+### Documentation
+`rarity.carry(arrayOfArgumentsToAddBetweenErrorAndOriginal, cb)`
+
+> If you pass something else than an array, it will be automatically wrapped in an array: `rarity.carry(value, cb)` => `rarity.caryr([value], cb)` => `cb(err, value, ...arguments)`
+
+## 2 - Slice arguments
 Did you ever find yourself writing shitty code such as this one:
 
 ```js
@@ -62,7 +90,7 @@ async.waterfall([
 ], process.exit);
 ```
 
-## 2 - Pad arguments
+## 3 - Pad arguments
 When using some shitty-backported lib, for instance `factory-lady`, you'll need to pad your queries with a first additional argument representing a fake error, making it compatible with all the node ecosystem.
 
 The following code:
@@ -72,7 +100,7 @@ someShittyFunction(function(result) {
 });
 ```
 
-Now becomes:
+Will become:
 ```js
 // Wraps cb with a new function, sending null as the first argument.
 someShittyFunction(rarity.pad([null], cb));
@@ -81,31 +109,6 @@ someShittyFunction(rarity.pad([null], cb));
 ### Documentation
 `rarity.pad(arrayOfArgumentsToPad, cb)`
 
-## 3 - Carry arguments
-Here is some cumbersome code:
-
-```js
-function(cb) {
-    var aVar = 1;
-    someFunction(function(err, result) {
-        cb(err, aVar, result);
-    })
-}
-```
-
-This is shitty to write. Here is some improved version:
-
-```js
-function(cb) {
-    var aVar = 1;
-    someFunction(rarity.carry([aVar], cb));
-}
-```
-
-Arguments passed in the array will be carried between the first argument of the original callback (the error) and all the others.
-
-### Documentation
-`rarity.carry(arrayOfArgumentsToAddBetweenErrorAndOriginal, cb)`
 
 ## Installation
 ```sh

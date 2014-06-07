@@ -1,7 +1,7 @@
 "use strict";
 
 var should = require('should');
-var rarity = require('../');
+var rarity = require('../lib/');
 
 describe('rarity()', function() {
   var EXPECTED_RESULT = "expectedResult";
