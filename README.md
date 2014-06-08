@@ -5,21 +5,22 @@ rarity
 [![Coverage Status](https://coveralls.io/repos/Neamar/rarity/badge.png?branch=master)](https://coveralls.io/r/Neamar/rarity?branch=master)
 [![NPM version](https://badge.fury.io/js/rarity.png)](http://badge.fury.io/js/rarity)
 
-Sometime, you need to control the arity of your callbacks.
+Continuation tools for callbacks arity.
 
 ## 1 - Carry arguments
-Here is some cumbersome code:
+Here is some shitty code:
 
 ```js
 function(cb) {
     var aVar = 1;
     someFunction(function(err, result) {
+        // Mix results from previous scope with new results
         cb(err, aVar, result);
-    })
+    });
 }
 ```
 
-This is shitty to write. Here is some improved version, using rarity:
+Here is some improved version, using rarity:
 
 ```js
 function(cb) {
@@ -80,7 +81,7 @@ var rarity = require('rarity');
 
 async.waterfall([
     function callShittyLib(cb) {
-        // Slice after the two first arguments
+        // Slice after the first two arguments, discard all others
         someShittyFunction(rarity(2, cb));
     },
     function handleResults(result, cb) {
@@ -100,7 +101,7 @@ someShittyFunction(function(result) {
 });
 ```
 
-Will become:
+Will become, using rarity:
 ```js
 // Wraps cb with a new function, sending null as the first argument.
 someShittyFunction(rarity.pad([null], cb));
