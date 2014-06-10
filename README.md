@@ -51,14 +51,10 @@ To minimize the quantity of arguments sent over to your next function (`async.wa
 
 ```js
 // Generate a wrapper function around cb, only forwarding the first parameter.
-someShittyFunction(rarity(1, cb));
+someShittyFunction(rarity.slice(1, cb));
 ```
 
 ### Documentation
-`rarity(maxNumberOfArgumentsToForward, cb)`
-
-You can also use:
-
 `rarity.slice(maxNumberOfArgumentsToForward, cb)`
 
 #### Without rarity
@@ -86,7 +82,7 @@ var rarity = require('rarity');
 async.waterfall([
     function callShittyLib(cb) {
         // Slice after the first two arguments, discard all others
-        someShittyFunction(rarity(2, cb));
+        someShittyFunction(rarity.slice(2, cb));
     },
     function handleResults(result, cb) {
         stuff();
@@ -113,6 +109,31 @@ someShittyFunction(rarity.pad([null], cb));
 
 ### Documentation
 `rarity.pad(arrayOfArgumentsToPad, cb)`
+
+
+## 4 - Carry and slice
+Specific use case, combining `rarity.carry` and `rarity.slice`:
+
+The following code:
+```js
+function(cb) {
+    var aVar = 1;
+    someFunction(function(err, result, useless) {
+        cb(err, aVar, result);
+    });
+}
+```
+
+Will become, using rarity:
+```js
+function(cb) {
+    var aVar = 1;
+    someFunction(rarity.carryAndSlice([aVar], 3, cb));
+}
+```
+
+### Documentation
+`rarity.carryAndSlice(arrayOfArgumentsToAddBetweenErrorAndOriginal, maxNumberOfArgumentsToForward, cb)`
 
 
 ## Installation
