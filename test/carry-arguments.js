@@ -74,4 +74,17 @@ describe('rarity.carry()', function() {
       done();
     }));
   });
+
+  it("should carry empty array", function(done) {
+    var original = function(cb) {
+      cb('error', EXPECTED_RESULT);
+    };
+
+    original(rarity.carry([], function(c1, c2) {
+      c1.should.eql('error');
+      c2.should.eql(EXPECTED_RESULT);
+      arguments.should.have.lengthOf(2);
+      done();
+    }));
+  });
 });
