@@ -76,4 +76,13 @@ describe('rarity()', function() {
 
     done(new Error("Should not be working"));
   });
+
+  it("should be available through rarity.slice()", function(done) {
+    shittyFunction(rarity.slice(2, function(err, result) {
+      should(err).eql(null);
+      result.should.eql(EXPECTED_RESULT);
+      arguments.should.have.lengthOf(2);
+      done();
+    }));
+  });
 });

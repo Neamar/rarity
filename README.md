@@ -57,6 +57,10 @@ someShittyFunction(rarity(1, cb));
 ### Documentation
 `rarity(maxNumberOfArgumentsToForward, cb)`
 
+You can also use:
+
+`rarity.slice(maxNumberOfArgumentsToForward, cb)`
+
 #### Without rarity
 ```js
 var async = require('async');
