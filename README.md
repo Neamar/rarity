@@ -81,10 +81,11 @@ var rarity = require('rarity');
 
 async.waterfall([
     function callShittyLib(cb) {
-        // Slice after the first two arguments, discard all others
+        // Slice after the first two arguments (err and results), discard all others
         someShittyFunction(rarity.slice(2, cb));
     },
     function handleResults(result, cb) {
+        // We only get result, not the other parameters (err was handled by the `async` lib)
         stuff();
         cb();
     }
