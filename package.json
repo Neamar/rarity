@@ -20,8 +20,8 @@
   ],
   "dependencies": {},
   "devDependencies": {
-    "mocha": "1.x.x",
-    "should": "4.0.x"
+    "mocha": "2.x.x",
+    "should": "4.3.x"
   },
   "licence": "MIT",
   "engines": {
