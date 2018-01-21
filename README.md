@@ -1,5 +1,7 @@
 rarity
 ======
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/Neamar/rarity.svg)](https://greenkeeper.io/)
 [![Build Status](https://travis-ci.org/Neamar/rarity.png?branch=master)](https://travis-ci.org/Neamar/rarity)
 [![Dependency Status](https://gemnasium.com/Neamar/rarity.png)](https://gemnasium.com/Neamar/rarity)
 [![Coverage Status](https://coveralls.io/repos/Neamar/rarity/badge.png?branch=master)](https://coveralls.io/r/Neamar/rarity?branch=master)
