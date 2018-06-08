@@ -23,7 +23,7 @@
     "mocha": "2.x.x",
     "should": "4.3.x"
   },
-  "licence": "MIT",
+  "license": "MIT",
   "engines": {
     "node": ">=4.0.0"
   }
